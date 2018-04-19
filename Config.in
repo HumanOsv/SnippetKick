@@ -1,0 +1,40 @@
+# # Numero de geometrias 
+# Numero de geometrias relajadas al inicio
+kick_numb_input  = 100
+
+
+# N° de procesadores y Memoria RAM 
+core_mem = 4,4
+# Carga y Multiplicidad
+charge_multi = 0,1
+
+
+# Metodo de relajacion inicial:
+# Campo de fuerza     (GAFF,Ghemical,MMFF94,MMFF94s,UFF)
+# Metodo Semiempirico (AUX LARGE PM7).
+# Campo de Fuerza ReaxFF (reaxxFF.Carbon)
+init_relax = 
+
+# Tamaño de la caja 
+box_size = 6.00,6.00,6.00
+
+# atomos ( example: H 02 Pb 03 Ca 04 )
+chemical_formula = H 02 Pb 03 Ca 04
+
+# fragmentos 
+fragments = 
+
+# first fragment fix (YES/NO)
+fragm_fix = NO
+
+
+# Numero de geometrias para enviar a un software QM
+kick_numb_output = 10
+# software mopac and gaussian (mopac/gaussian)
+software = gaussian
+
+# # configuracion archivo para optimizacion a nivel cuantico 
+# keywords for mopac, gaussian and ADF
+header = PBE1PBE/SDDAll scf=(maxcycle=512)  opt=(cartesian,maxcycle=512)
+#header = AUX LARGE PM6
+
