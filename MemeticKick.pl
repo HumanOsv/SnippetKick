@@ -31,7 +31,7 @@ my $path_bin_mopac = "/opt/mopac/MOPAC2016.exe";
 my $criteria_lammps = "1e-06";
 # specify the maximum numer of steps 
 my $steps_lammps    = "100";
-my $path_bin_lammps = "lmp_mpi.exe";
+my $path_bin_lammps = "mpiexec -np 16 lammps-daily";
 
 # # #
 # molecular mechanics
