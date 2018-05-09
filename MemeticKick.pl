@@ -2035,7 +2035,10 @@ if (-e $dir_kick and -d $dir_kick) {
 	}
 	if( -e "XYZ_OPT_ReaxFF.xyz" ){
 		move("XYZ_OPT_ReaxFF.xyz","$dir_kick");
-	}	
+	}
+	if( -e "XYZ_Coords.xyz" ){
+		move("XYZ_Coords.xyz","$dir_kick");
+	}
 	#
 	move("Duplicates_coords.xyz","$dir_kick");
 	move("Duplicates_info.log","$dir_kick");
