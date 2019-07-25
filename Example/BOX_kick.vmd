@@ -1,0 +1,15 @@
+draw delete all
+draw materials off
+draw color green
+draw line "-3 -3 -3" "3 -3 -3" 
+draw line "-3 -3 -3" "-3 3 -3" 
+draw line "-3 -3 -3" "-3 -3 3" 
+draw line "3 -3 -3" "3 3 -3" 
+draw line "3 -3 -3" "3 -3 3" 
+draw line "-3 3 -3" "3 3 -3" 
+draw line "-3 3 -3" "-3 3 3" 
+draw line "-3 -3 3" "3 -3 3" 
+draw line "-3 -3 3" "-3 3 3" 
+draw line "3 3 3" "3 3 -3" 
+draw line "3 3 3" "-3 3 3" 
+draw line "3 3 3" "3 -3 3" 
