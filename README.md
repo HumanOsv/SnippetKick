@@ -56,7 +56,7 @@ Alternatively, it can be downloaded using the Git tools using the following comm
 
 **Note: before downloading using Git tools, make sure to be in your final installation path.**
 
-We recommend to install using Git tools to update future AUTOMATON software easily. To update the program, use the following command:
+We recommend to install using Git tools to update future SnippetKick software easily. To update the program, use the following command:
 
 	user$ git pull master
 	
@@ -80,7 +80,7 @@ Now, use the following commands to execute this program:
 
     user$  perl SnippetKick.pl Config.in > out.log
 
-Alternatively, the user can set AUTOMATON to run in the background using one of the following methods:
+Alternatively, the user can set SnippetKick to run in the background using one of the following methods:
 
 	user$ nohup perl SnippetKick.pl Config.in > out.log
 	user$ setsid perl SnippetKick.pl Config.in > out.log
