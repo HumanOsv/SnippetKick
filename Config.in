@@ -1,40 +1,44 @@
-# # Numero de geometrias 
-# Numero de geometrias relajadas al inicio
+# The Initial Population size. 
 kick_numb_input = 1000
 
-# N° de procesadores y Memoria RAM 
-core_mem = 4,4
-# Carga y Multiplicidad
-charge_multi = 0,1
-
-
-# # Metodo de relajacion inicial:
-# Campo de fuerza     (GAFF,Ghemical,MMFF94,MMFF94s,UFF)
-# Metodo Semiempirico (AUX LARGE PM7).
-# Campo de Fuerza ReaxFF (reaxxFF.Carbon)
-init_relax = UFF
-
-# Tamaño de la caja 
+# The size of the box (in Angstroms) length, width, and height. 
 box_size = 6.00,6.00,6.00
 
-# atomos ( example: Li 05 )
+# Element symbols and number of atoms for each chemical species. (example: Li 05 )
 chemical_formula = 
 
-# fragmentos 
+# Name of molecular fragments in the simulation.
 fragments = monomer1,monomer1
 
-# first fragment fix (YES/NO)
+# Restricted molecular fragment (YES/NO): It will always be the first molecular fragment to be placed in keyword fragments.
 fragm_fix = NO
-# Duplicates (0=No & 1=Yes)
+# Search for duplicate molecular fragments (0=No/1=Yes)
 duplicates = 0
 
-# Numero de geometrias para enviar a un software QM
+# Number of final geometries. :species to send for quantum calculations
 kick_numb_output = 10
+
+
+# # Configuring the program for chemistry packages 
+# The number of processors to use in the run (the value may be used to create the input file) and memory to be used in GB.
+core_mem = 4,4
+# The charge and multiplicity of the candidate.
+charge_multi = 0,1
+
+# # Initial geometrical relaxation methods: 
+# Force Field of Open Babel        (GAFF,Ghemical,MMFF94,MMFF94s,UFF)
+# Semiempirical methods of MOPAC   (AUX LARGE PM7).
+# Input file Force Field of ReaxFF (reaxxFF.Carbon)
+init_relax = UFF
+
+
 # software mopac and gaussian (mopac/gaussian)
 software = gaussian
 
-# # configuracion archivo para optimizacion a nivel cuantico 
-# keywords for mopac & gaussian
+# # keywords for gaussian and mopac
+# Gaussian
 header = PBE1PBE/SDDAll scf=(maxcycle=512)  opt=(cartesian,maxcycle=512)
+
+# Mopac
 #header = AUX LARGE PM6
 
