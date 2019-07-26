@@ -156,7 +156,7 @@ Software mopac and gaussian (mopac/gaussian)
      
     software = gaussian
 
-Keywords for gaussian, mopac, or lammps
+Keywords for gaussian or mopac
 
 *1. Gaussian*
 
