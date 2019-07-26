@@ -62,7 +62,7 @@ We recommend to install using Git tools to update future AUTOMATON software easi
 	
 Alternatively, SnippetKick could be installed as follows: choose a final installation path, and then extract the ZIP file (containing the software). Provide all the basic permissions for use and, optionally, set SnippetKick.pl file as a system call.
 
-**3)	Running AUTOMATON**
+**3)	Running SnippetKick**
 
 To run SnippetKick the following files are necessary in the working directory:
 
@@ -136,17 +136,17 @@ The charge and multiplicity of the candidate.
 
 *Initial geometrical relaxation methods:*
 
-1. Force Field of Open Babel        (GAFF,Ghemical,MMFF94,MMFF94s,UFF)
+1. Force Field of Open Babel.(GAFF,Ghemical,MMFF94,MMFF94s,UFF)
 
-    init_relax = UFF
+       init_relax = UFF
 
-2. Semiempirical methods of MOPAC   (AUX LARGE PM7).
+2. Semiempirical methods of MOPAC.(AUX LARGE PM7).
 
-    init_relax = AUX LARGE PM6
+       init_relax = AUX LARGE PM6
 
-3. Input file Force Field of ReaxFF (reaxxFF.Carbon)
+3. Input file Force Field of ReaxFF.(reaxxFF.Carbon)
 
-    init_relax = reaxxFF.Carbon
+       init_relax = reaxxFF.Carbon
 
 Software mopac and gaussian (mopac/gaussian)
      
@@ -167,7 +167,7 @@ Keywords for gaussian, mopac, or lammps
     Correct : software = gaussian
     Wrong   : software=gaussian
 
-**5) AUTOMATON outputs**
+**5) SnippetKick outputs**
 
 After a successful run of the program, several output files will be generated in your working directory.
 
