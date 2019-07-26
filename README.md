@@ -97,7 +97,7 @@ The size of the box (in Angstroms) length, width, and height.
 
     box_size = 6.00,6.00,6.00
     
-Element symbols and number of atoms for each chemical species. (example: Li 05 )
+Element symbols and number of atoms for each chemical species. (example: Li 05 or empty)
 
     chemical_formula = 
 
