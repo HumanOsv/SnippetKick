@@ -10,17 +10,17 @@ chemical_formula =
 # Name of molecular fragments in the simulation.
 fragments = monomer1,monomer1
 
-# Restricted molecular fragment (YES/NO): It will always be the first molecular fragment to be placed in keyword fragments.
+# Restricted molecular fragment (YES/NO).
 fragm_fix = NO
 # Search for duplicate molecular fragments (0=No/1=Yes)
 duplicates = 0
 
-# Number of final geometries. :species to send for quantum calculations
+# Number of final geometries.
 kick_numb_output = 10
 
 
 # # Configuring the program for chemistry packages 
-# The number of processors to use in the run (the value may be used to create the input file) and memory to be used in GB.
+# The number of processors to use in the run (the value may be used to create the output file) and memory to be used in GB.
 core_mem = 4,4
 # The charge and multiplicity of the candidate.
 charge_multi = 0,1
