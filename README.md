@@ -136,7 +136,7 @@ The charge and multiplicity of the candidate.
 
 *Initial geometrical relaxation methods:*
 
-1. Force Field of Open Babel.(GAFF,Ghemical,MMFF94,MMFF94s,UFF)
+1. Open Babel Force Field.(GAFF,Ghemical,MMFF94,MMFF94s,UFF)
 
        init_relax = UFF
 
@@ -144,7 +144,7 @@ The charge and multiplicity of the candidate.
 
        init_relax = AUX LARGE PM6
 
-3. Input file Force Field of ReaxFF.(reaxxFF.Carbon)
+3. Input file ReaxFF Force Field of Lammps.(reaxxFF.Carbon)
 
        init_relax = reaxxFF.Carbon
 
@@ -171,11 +171,11 @@ Keywords for gaussian, mopac, or lammps
 
 After a successful run of the program, several output files will be generated in your working directory.
 
-	01Final_coords.xyz         : Final coordinates XYZ file format of each species ordered less energy at higher energy.
-	02Duplicate_coords.xyz     : Candidates that are a duplicate of a candidate in the population, in XYZ file format.
-	Output.log                 : Print summary information after each set of this many iterations.
-	PostCoords-NumberCycle.xyz : Local optimization for each structure.
-	PreCoords-NumberCycle.xyz  : Non-optimized structures.
+	Final_coords_gaussian.xyz or Final_coords_Mopac.xyz : Final coordinates XYZ file format of each species ordered less energy at higher energy.
+	BOX_kick.vmd     : Candidates that are a duplicate of a candidate in the population, in XYZ file format.
+	out.log                 : Print summary information SnippetKick.
+	XYZ_OPT_MM.xyz or XYZ_OPT_MM.xyz : Local optimization for each structure.
+	
 	
 
 
