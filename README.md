@@ -1,6 +1,9 @@
 # SnippetKick
 The SnippetKick algorithm combines local with global search for molecules and clusters. An extension of the Kick program developed by Addicoat et al. is described in which chemically sensible molecular fragments are used in an automated stochastic search algorithm.(1-3)
 
+![alt text](https://github.com/HumanOsv/Automaton/blob/master/Old-Version/aguas_kick.png)
+
+
 (1) 	Addicoat, M. A.; Metha, G. F. Kick: Constraining a Stochastic Search Procedure with Molecular Fragments. J. Comput. Chem. 2009, 30 (1), 57–64.
 
 
