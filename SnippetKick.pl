@@ -26,7 +26,7 @@ use Parallel::ForkManager;
 my $numero_colas     = 3;
 my $gaussian_version = "g09";
 # Local = 0 y queue = 1
-my $local_cluster   = 1;
+my $local_cluster   = 0;
 
 
 #
