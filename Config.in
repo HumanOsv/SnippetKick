@@ -8,7 +8,7 @@ box_size = 6.00,6.00,6.00
 chemical_formula = 
 
 # Name of molecular fragments in the simulation.
-fragments = monomer1,monomer1
+fragments = H2O,H2O
 
 # Restricted molecular fragment (YES/NO).
 fragm_fix = NO
