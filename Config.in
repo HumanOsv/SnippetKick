@@ -27,7 +27,7 @@ charge_multi = 0,1
 
 # # Initial geometrical relaxation methods: 
 # Force Field of Open Babel        (GAFF,Ghemical,MMFF94,MMFF94s,UFF)
-# Semiempirical methods of MOPAC   (AUX LARGE PM7).
+# Semiempirical methods of MOPAC   (NOOPT AUX LARGE PM6).
 # Input file Force Field of ReaxFF (reaxxFF.Carbon)
 init_relax = UFF
 
