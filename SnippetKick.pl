@@ -993,11 +993,11 @@ sub submit_queue {
 			if( ( -e "$without_extension.out" ) || ( -e "$without_extension.log" ) ) {
 				my @Secuencias   = ();
 				if( -e "$without_extension.out" ) {
-					sleep(2);
+					sleep(3);
 					@Secuencias      = read_file ("$without_extension.out");
 				}
 				if( -e "$without_extension.log" ) {
-					sleep(2);
+					sleep(3);
 					@Secuencias      = read_file ("$without_extension.log");
 				}
 				#
@@ -1024,18 +1024,29 @@ sub submit_queue {
 						# funcion
 						if( -e "$without_extension.com" ){ unlink ("$without_extension.com");}
 						($energy,$atom_numb,$total_coords) = coords_energy_file (\@Secuencias);
-						my $G09name = G03Input ($without_extension,$header,$ncpus,$mem,$Charge,$Multiplicity,$total_coords,$energy);
-						if( -e "$without_extension.chk" ){ unlink ("$without_extension.chk");}
-						if( -e "$without_extension.out" ){ unlink ("$without_extension.out");}
-						if( -e "$without_extension.log" ){ unlink ("$without_extension.log");}
 						#
-						my @empty_arr = ();
-						#
-						if ($local_cluster == 0) {
-							#slurm_cluster (\@empty_arr,$without_extension,100,1);
-							parallel_cpu_local (\@empty_arr,$without_extension,100,1);
+						# If the coordinates are empty
+						if (!defined($total_coords)) {
+							#
+							#print "No Coordinates\n";
+							#
+							delete $Info_files_dir{$key};					
 						} else {
-							my $env_b = `$exec_bin_g09 $without_extension $without_extension.com $ncpus $queue`;
+							my $G09name = G03Input ($without_extension,$header,$ncpus,$mem,$Charge,$Multiplicity,$total_coords,$energy);
+							if( -e "$without_extension.chk" ){ unlink ("$without_extension.chk");}
+							if( -e "$without_extension.out" ){ unlink ("$without_extension.out");}
+							if( -e "$without_extension.log" ){ unlink ("$without_extension.log");}
+							#
+							my @empty_arr = ();
+							#
+							if ($local_cluster == 0) {
+								sleep(2);
+								#slurm_cluster (\@empty_arr,$without_extension,100,1);
+								parallel_cpu_local (\@empty_arr,$without_extension,100,1,$software_option);
+							} else {
+								sleep(2);
+								my $env_b = `$exec_bin_g09 $without_extension $without_extension.com $ncpus $queue`;
+							}
 						}
 					}				
 				}		
@@ -1065,9 +1076,11 @@ sub submit_queue {
 						my @empty_arr = ();
 						#
 						if ($local_cluster == 0) {
+							sleep(2);
 							#slurm_cluster (\@empty_arr,$without_extension,100,1);
 							parallel_cpu_local (\@empty_arr,$without_extension,100,1);
 						} else {
+							sleep(2);
 							my $env_b = `$exec_bin_g09 $without_extension $without_extension.com $ncpus $queue`;
 						}
 					}
@@ -1105,14 +1118,15 @@ sub submit_queue {
 	#
 	foreach my $file (@total_files_qm) {
 		(my $without_extension = $file) =~ s/\.[^.]+$//;
+		#
 		if( ( -e "$without_extension.out" ) || ( -e "$without_extension.log" ) ) {
 			my @Secuencias   = ();
 			if( -e "$without_extension.out" ) {
-				sleep(2);
+				sleep(3);
 				@Secuencias      = read_file ("$without_extension.out");
 			}
 			if( -e "$without_extension.log" ) {
-				sleep(2);
+				sleep(3);
 				@Secuencias      = read_file ("$without_extension.log");
 			}
 			my $option       = verification_of_termination(\@Secuencias);
@@ -1141,12 +1155,18 @@ sub submit_queue {
 				}
 			} else {
 				my ($energy_scf,$atom_numb,$coords_opt) = coords_energy_file (\@Secuencias);
-				push (@energy_opt ,$energy_scf);
-				push (@coords_opt ,$coords_opt);
-				push (@file_opt   ,$without_extension);
-				push (@num_element,$atom_numb);
 				#
-				push (@files_Port_Error,$without_extension);
+				if (!defined($coords_opt)) {	
+					push (@files_No_Coords,$without_extension);	
+					$Port_No_Coords++;				
+				} else {
+					push (@energy_opt ,$energy_scf);
+					push (@coords_opt ,$coords_opt);
+					push (@file_opt   ,$without_extension);
+					push (@num_element,$atom_numb);
+					#
+					push (@files_Port_Error,$without_extension);
+				}
 			}
 			# Proportion of Normal and Error Termination
 			if ( $option == 1 ) {
