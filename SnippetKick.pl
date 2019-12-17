@@ -1373,7 +1373,7 @@ sub G03Input {
 	my $G03Input     = "$filebase.com";
 	#
 	if (!defined($coordsMM)) {
-		print "$filebase = Without Coordinates\n";
+		print "¡Warning! $filebase = Without Coordinates\n";
 	}
 	#
 	open (COMFILE, ">$G03Input");
@@ -1782,10 +1782,15 @@ if ( $Num_of_fragments > 0 ) {
 		my @tmp_array = read_file("$filename");
 		foreach my $j (@tmp_array) {
 			my @array_tabs  = split (/\s+/,$j);
-			my $element = $array_tabs[0];
-			push (@new_coord_x,$array_tabs[1]);
-			push (@new_coord_y,$array_tabs[2]);
-			push (@new_coord_z,$array_tabs[3]);
+			my $element     = $array_tabs[0];
+			#
+			my $axisX       = sprintf '%.6f', $array_tabs[1];
+			my $axisY       = sprintf '%.6f', $array_tabs[2];
+			my $axisZ       = sprintf '%.6f', $array_tabs[3];
+			#
+			push (@new_coord_x,$axisX);
+			push (@new_coord_y,$axisY);
+			push (@new_coord_z,$axisZ);
 			#
 			push (@total_atoms,$element);
 		}
@@ -1846,13 +1851,13 @@ if ($option_box == 0) {
 	@max_coords    = ($side_plus_x,$side_plus_y,$side_plus_z);
 }
 #
-my $mi_x = sprintf '%.4f',$min_coords[0];
-my $mi_y = sprintf '%.4f',$min_coords[1];
-my $mi_z = sprintf '%.4f',$min_coords[2];
+my $mi_x = sprintf '%.6f',$min_coords[0];
+my $mi_y = sprintf '%.6f',$min_coords[1];
+my $mi_z = sprintf '%.6f',$min_coords[2];
 #
-my $ma_x = sprintf '%.4f',$max_coords[0];
-my $ma_y = sprintf '%.4f',$max_coords[1];
-my $ma_z = sprintf '%.4f',$max_coords[2];
+my $ma_x = sprintf '%.6f',$max_coords[0];
+my $ma_y = sprintf '%.6f',$max_coords[1];
+my $ma_z = sprintf '%.6f',$max_coords[2];
 #
 print "MESSAGE Box size Min = $mi_x $mi_y $mi_z\n"; 
 print "MESSAGE Box size Max = $ma_x $ma_y $ma_z\n";
@@ -1868,10 +1873,15 @@ foreach my $fil (@Fragments) {
 	my @array_file_fix = read_file("$filename");
 	foreach my $i (@array_file_fix){
 		my @Cartesian = split '\s+', $i;
-		push (@coordx,$Cartesian[1]);
-		push (@coordy,$Cartesian[2]);
-		push (@coordz,$Cartesian[3]);
-		#		
+		#
+		my $axisX       = sprintf '%.8f', $Cartesian[1];
+		my $axisY       = sprintf '%.8f', $Cartesian[2];
+		my $axisZ       = sprintf '%.8f', $Cartesian[3];
+		#
+		push (@coordx,$axisX);
+		push (@coordy,$axisY);
+		push (@coordz,$axisZ);
+		#
 		my $element = $Cartesian[0];
 		my $radii_val;
 		if ( exists $Atomic_number{$element} ) {
@@ -1890,8 +1900,11 @@ foreach my $fil (@Fragments) {
 	my @array_catersian   = vecadd (\@coordx,\@coordy,\@coordz,\@array_vecinvert);
 	#
 	open (my $fh, '>', "$filename") or die "Could not open file '$filename' $!";
-	for ( my $i = 0 ; $i < scalar (@coordx) ; $i = $i + 1 ){
-		print $fh "$elements_new[$i]\t$array_catersian[0][$i]\t$array_catersian[1][$i]\t$array_catersian[2][$i]\n";
+	for ( my $i = 0 ; $i < scalar (@coordx) ; $i = $i + 1 ){	
+		my $axisX       = sprintf '%.6f', $array_catersian[0][$i];
+		my $axisY       = sprintf '%.6f', $array_catersian[1][$i];
+		my $axisZ       = sprintf '%.6f', $array_catersian[2][$i];
+		print $fh "$elements_new[$i]\t$axisX\t$axisY\t$axisZ\n";
 	}
 	close $fh;
 }
@@ -2051,7 +2064,12 @@ while ( $iteration < $Num_of_geometries_input ) {
 			foreach my $dn (@value_array) {
 				my @info_cart = split '\s+', $dn;
 				push (@new_elem_cart, $info_cart[0]);
-				push (@new_xyzc_cart, "$info_cart[1]\t$info_cart[2]\t$info_cart[3]");
+				#
+				my $axisX = sprintf '%.6f', $info_cart[1];
+				my $axisY = sprintf '%.6f', $info_cart[2];
+				my $axisZ = sprintf '%.6f', $info_cart[3];				
+				#
+				push (@new_xyzc_cart, "$axisX\t$axisY\t$axisZ");
 			}	
 		}
 		#
