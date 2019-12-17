@@ -1042,7 +1042,7 @@ sub submit_queue {
 							if ($local_cluster == 0) {
 								sleep(2);
 								#slurm_cluster (\@empty_arr,$without_extension,100,1);
-								parallel_cpu_local (\@empty_arr,$without_extension,100,1,$software_option);
+								parallel_cpu_local (\@empty_arr,$without_extension,100,1);								
 							} else {
 								sleep(2);
 								my $env_b = `$exec_bin_g09 $without_extension $without_extension.com $ncpus $queue`;
@@ -1157,8 +1157,8 @@ sub submit_queue {
 				my ($energy_scf,$atom_numb,$coords_opt) = coords_energy_file (\@Secuencias);
 				#
 				if (!defined($coords_opt)) {	
-					push (@files_No_Coords,$without_extension);	
-					$Port_No_Coords++;				
+					#push (@files_No_Coords,$without_extension);	
+					#$Port_No_Coords++;				
 				} else {
 					push (@energy_opt ,$energy_scf);
 					push (@coords_opt ,$coords_opt);
