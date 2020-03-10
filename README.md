@@ -4,6 +4,9 @@ The SnippetKick algorithm combines local with global search for molecules and cl
 ![alt text](https://github.com/HumanOsv/Logos/blob/master/aguas_kick.png)
 
 
+    Last update: February, 11-2020
+
+
 (1) 	Addicoat, M. A.; Metha, G. F. Kick: Constraining a Stochastic Search Procedure with Molecular Fragments. J. Comput. Chem. 2009, 30 (1), 57–64.
 
 
